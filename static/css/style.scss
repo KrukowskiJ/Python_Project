@@ -1,0 +1,41 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #FBFBEB;
+$compname-color: #3A3C38;
+$logo-color: #F28383;
+$grey: #9C9C94;
+*{
+    margin:0;
+}
+body{
+    background-color: $primary-color;
+}
+.company_name{
+   color:$compname-color;
+    font-size:2.5em;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav{
+    width:30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+
+
+  a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: $compname-color;
+    display: block;
+    transition: 0.3s;
+  }
+  a:hover {
+    font-weight: 700;
+    font-size:30px;
+  }
+}
