@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlaskApp</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+</head>
+<body>
+    <form class="sex-switch" method="post" action="/">
+                <input type="submit" value="Men" name="action1"/>
+                <input type="submit" value="Women" name="action2" />
+    </form>
+    <div class="header">
+
+         <h1 class="company_name">Python</h1>
+         <img height="90%" width="90px" src="static/img/logo_transparent.png" alt="Python Squad">
+         <h1 class="company_name">Squad</h1>
+
+    </div>
+    <div class="container">
+        <div class="nav" >
+              <a value="Men" href="new">New</a>
+              <a href="sales" style="color:#F38383">Sales</a>
+              <a href="clothes">Clothes{{ sex, items }}</a>
+              <a href="shoes">Shoes</a>
+              <a href="accessories">Accessories</a>
+              <a href="lookbook">Look Book</a>
+        </div>
+        <div class="items" >
+                {% if sex == "Men"%}
+                    <div class="item" >
+                        <img  height="100%" width="auto" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_man_novedades_-1.jpg?20211211024008">
+                        <div class="item_data">
+                            <p>ITEM NAME</p>
+                            <p>DESCasfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
+                            <p>PRICE</p>
+                        </div>
+                    </div>
+                    <div class="item" >
+                        <img  height="100%" width="auto" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_man_novedades_-1.jpg?20211211024008">
+                        <div class="item_data">
+                            <p>ITEM NAME</p>
+                            <p>DESC</p>
+                            <p>PRICE</p>
+                        </div>
+                    </div>
+                      <div class="item" >
+                        <img  height="100%" width="auto" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_man_novedades_-1.jpg?20211211024008">
+                        <div class="item_data">
+                            <p>ITEM NAME</p>
+                            <p>DESC</p>
+                            <p>PRICE</p>
+                        </div>
+                    </div>
+                      <div class="item" >
+                        <img  height="100%" width="auto" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_man_novedades_-1.jpg?20211211024008">
+                        <div class="item_data">
+                            <p>ITEM NAME</p>
+                            <p>DESC</p>
+                            <p>PRICE</p>
+                        </div>
+                    </div>
+                      <div class="item" >
+                        <img  height="100%" width="auto" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_man_novedades_-1.jpg?20211211024008">
+                        <div class="item_data">
+                            <p>ITEM NAME</p>
+                            <p>DESC</p>
+                            <p>PRICE</p>
+                        </div>
+                    </div>
+
+                {% elif sex == "Women"%}
+                    <div class="item" >
+                        <img  height="20%" width="20%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                    </div>
+                    <div class="item" >
+                        <img  height="20%" width="20%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                    </div>
+                    <div class="item" >
+                        <img  height="20%" width="20%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                    </div>
+                    <div class="item" >
+                        <img  height="20%" width="20%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                    </div>
+                    <div class="item" >
+                        <img  height="20%" width="20%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                    </div>
+                      <div class="item" >
+                        <img  height="20%" width="20%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                    </div>
+                    <div class="item" >
+                        <img  height="20%" width="20%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                    </div>
+                    <div class="item" >
+                        <img  height="20%" width="20%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                    </div>
+                    <div class="item" >
+                        <img  height="20%" width="20%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                    </div>
+                {% endif %}
+        </div>
+
+    </div>
+</body>
+</html>

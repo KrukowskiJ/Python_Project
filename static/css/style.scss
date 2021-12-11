@@ -11,21 +11,27 @@ body{
 }
 .company_name{
    color:$compname-color;
-    font-size:2.5em;
+    font-size:2em;
 }
 .header{
     display: flex;
     justify-content: center;
     align-items: center;
+  height:10vh;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height:90vh;
+    width:100vw;
 }
 .nav{
-    width:30vw;
+    width:10vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
-
-
   a{
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -39,3 +45,43 @@ body{
     font-size:30px;
   }
 }
+.sex-switch{
+  margin: 15px 15px 15px 15px;
+  position: absolute;
+
+  input[type=submit] {
+    color: $compname-color;
+    padding:5px 15px;
+    text-transform: uppercase;
+    background: transparent;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+  input[type=submit]:hover{
+    color: $primary-color;
+    background: $compname-color;
+  }
+}
+.items{
+    height: 100%;
+    width: 70vw;
+    flex-wrap: wrap;
+}
+.item{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+  width: auto;
+}
+.item-data{
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+

@@ -8,17 +8,27 @@ body {
 
 .company_name {
   color: #3A3C38;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 10vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
+  width: 100vw;
 }
 
 .nav {
-  width: 30vw;
+  width: 10vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -34,6 +44,48 @@ body {
 .nav a:hover {
   font-weight: 700;
   font-size: 30px;
+}
+
+.sex-switch {
+  margin: 15px 15px 15px 15px;
+  position: absolute;
+}
+.sex-switch input[type=submit] {
+  color: #3A3C38;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.sex-switch input[type=submit]:hover {
+  color: #FBFBEB;
+  background: #3A3C38;
+}
+
+.items {
+  height: 100%;
+  width: 70vw;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+  width: auto;
+}
+
+.item-data {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
