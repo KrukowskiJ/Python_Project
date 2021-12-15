@@ -74,10 +74,16 @@ body{
   justify-content: space-around;
   align-items: center;
   height: 200px;
-  width: auto;
+  width: 500px;
+  margin:30px;
+
+  img{
+  height:auto;
+    width:20vw;
+  }
 }
-.item-data{
-  width: 20vw;
+.item_data{
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
