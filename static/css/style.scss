@@ -46,20 +46,21 @@ body{
   }
 }
 .sex-switch{
-  margin: 15px 15px 15px 15px;
+  left:10px;
   position: absolute;
 
-  input[type=submit] {
+  a {
     color: $compname-color;
     padding:5px 15px;
     text-transform: uppercase;
+    text-decoration: none;
     background: transparent;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px;
   }
-  input[type=submit]:hover{
+  a:hover{
     color: $primary-color;
     background: $compname-color;
   }
@@ -91,3 +92,9 @@ body{
   text-align: center;
 }
 
+.cart{
+  right:10px;
+  position: absolute;
+
+
+}
