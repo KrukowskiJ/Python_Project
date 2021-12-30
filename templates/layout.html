@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlaskApp</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+         <form class="sex-switch" action="/">
+                <a href="/men">Men</a>
+                <a href="/women">Women</a>
+         </form>
+         <h1 class="company_name">Python</h1>
+         <img height="90%" width="90px" src="/static/img/logo_transparent.png" alt="Python Squad">
+         <h1 class="company_name">Squad</h1>
+        <a href="cart" class="cart"><img height="40px" width="40px" src="/static/img/cart.svg" alt="Cart" ></a>
+        <a href="user" class="login"><img height="44px" width="44px" src="/static/img/account.png" alt="Cart" ></a>
+    </div>
+    <div class="container">
+        <div class="nav">
+               {% block nav %}{% endblock %}
+        </div>
+               {% block container %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,31 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>FlaskApp</title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
-</head>
-<body>
-     <div class="header">
-         <form class="sex-switch" action="/">
-                <a href="/men">Men</a>
-                <a href="/women">Women</a>
-         </form>
-         <h1 class="company_name">Python</h1>
-         <img height="90%" width="90px" src="../static/img/logo_transparent.png" alt="Python Squad">
-         <h1 class="company_name">Squad</h1>
-       <a href="/cart" class="cart" ><img height="40px" width="40px" src="/static/img/cart.svg" alt="Cart" ></a>
-    </div>
-    <div class="container">
-        <div class="nav" >
+{% extends 'layout.html' %}
+
+    {% block nav %}
               <a href="new">New</a>
               <a href="sales" style="color:#F38383">Sales</a>
               <a href="clothes">Clothes</a>
               <a href="shoes">Shoes</a>
               <a href="accessories">Accessories</a>
               <a href="lookbook">Look Book</a>
-        </div>
+    {% endblock %}
 
+    {% block container %}
         <div class="items" >
                     {% for el in items_table[sex][items]%}
                         <div class="item" >
@@ -35,10 +19,12 @@
                                 <p>DESC {{ el.desc }}</p>
                                 <p>Price: {{ el.price }}</p>
                             </div>
+                            <form action="{{ url_for('AddCart') }}" method="post">
+                                <input type="hidden" name="product_name" value="{{ el.name }}">
+                                <input type="hidden" name="product_price" value="{{ el.price }}">
+                                <button type="submit">Add to cart</button>
+                            </form>
                         </div>
                     {% endfor %}
         </div>
-
-    </div>
-</body>
-</html>
+    {% endblock %}
