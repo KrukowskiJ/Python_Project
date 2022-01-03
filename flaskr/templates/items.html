@@ -10,11 +10,13 @@
     {% endblock %}
 
     {% block container %}
+
         <div class="items" >
-                    {% for el in items_table[sex][items]%}
+                    {% for el in items_table %}
                         <div class="item" >
                             <img src="{{ el.url }}">
                             <div class="item_data">
+                                <p>{{ el }}</p>
                                 <p>{{ el.name }}</p>
                                 <p>DESC {{ el.desc }}</p>
                                 <p>Price: {{ el.price }}</p>

@@ -1,7 +1,7 @@
 import os
-from flask import Flask, render_template, request,  url_for, json,redirect
-app = Flask(__name__)
-
+from flask import  render_template, request,  url_for, redirect
+from flaskr import app
+from flaskr.models import Product
 class Cart:
   def __init__(self, count, sum, items):
     self.count = count
@@ -13,7 +13,6 @@ global_cart = Cart(0,0,'')
 def AddCart():
     product_name =request.form.get('product_name')
     product_price = int(request.form.get('product_price'))
-
     global_cart.sum += product_price
     global_cart.items.append(product_name)
     global_cart.count += 1
@@ -28,9 +27,8 @@ def start(sex):
     return render_template('index.html', sex=sex)
 
 @app.route('/<sex>/<items>', methods=['GET', 'POST'])
-def itemspage(sex,items):  # put application's code here
-    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-    data = json.load(open(os.path.join(SITE_ROOT, "static", "data\data.json"), "r"))
+def itemspage(sex, items):  # put application's code here
+    data = Product.query.filter((Product.sex == sex) & (Product.category == items))
     return render_template('items.html', sex=sex, items=items,items_table=data)
 
 @app.route('/cart')
@@ -40,6 +38,3 @@ def cart():
 @app.route('/user')
 def carrt():
     return render_template('cart.html',cart=global_cart,items=1)
-
-if __name__ == '__main__':
-    app.run()
