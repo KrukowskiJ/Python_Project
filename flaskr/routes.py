@@ -1,7 +1,9 @@
 import os
-from flask import  render_template, request,  url_for, redirect
+from flask import  Blueprint, render_template, request,  url_for, redirect
 from flaskr import app
 from flaskr.models import Product
+
+
 class Cart:
   def __init__(self, count, sum, items):
     self.count = count
@@ -22,6 +24,10 @@ def AddCart():
 def redirectx():
     return redirect("/men")
 
+@app.route('/<x>/profile')
+def profile(x):
+    return render_template('profile.html')
+
 @app.route("/<sex>", methods=['GET', 'POST'])
 def start(sex):
     return render_template('index.html', sex=sex)
@@ -35,6 +41,10 @@ def itemspage(sex, items):  # put application's code here
 def cart():
     return render_template('cart.html',cart=global_cart,items=1)
 
-@app.route('/user')
-def carrt():
-    return render_template('cart.html',cart=global_cart,items=1)
+@app.route('/user',methods = ['POST', 'GET'])
+def user():
+    return render_template('profile.html')
+
+@app.route('/panel',methods = ['POST', 'GET'])
+def panel():
+    return render_template('loginpanel.html')

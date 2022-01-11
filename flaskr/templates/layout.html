@@ -15,7 +15,7 @@
          <img height="90%" width="90px" src="/static/img/logo_transparent.png" alt="Python Squad">
          <h1 class="company_name">Squad</h1>
         <a href="cart" class="cart"><img height="40px" width="40px" src="/static/img/cart.svg" alt="Cart" ></a>
-        <a href="user" class="login"><img height="44px" width="44px" src="/static/img/account.png" alt="Cart" ></a>
+        <a href={% if current_user.is_authenticated %}{{"user"}}{% else %}{{"panel"}}{% endif %} class="login"><img height="44px" width="44px" src="/static/img/account.png" alt="Cart" ></a>
     </div>
     <div class="container">
         <div class="nav">

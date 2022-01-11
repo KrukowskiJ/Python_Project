@@ -2,7 +2,7 @@ from flask import Flask, render_template, request,  url_for, json, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-
+from flask_login import LoginManager
 app = Flask(__name__)
 app.secret_key = "hello"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -12,10 +12,25 @@ db = SQLAlchemy(app)
 
 
 from flaskr.models import User, Product
+
+login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    # since the user_id is just the primary key of our user table, use it in the query for the user
+    return User.query.get(int(user_id))
+
+
 db.create_all()
 db.session.commit()
 admin = Admin(app, name='microblog', template_mode='bootstrap4')
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Product, db.session))
+
+# blueprint for auth routes in our app
+from flaskr.auth import auth as auth_blueprint
+app.register_blueprint(auth_blueprint)
 
 from flaskr import routes, models
