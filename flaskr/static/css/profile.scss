@@ -1,0 +1,11 @@
+@import "settings.scss";
+
+.card{
+  height: 30vh;
+  width: 40vw;
+  margin: auto;
+  background-color: $compname-color;
+}
+.name{
+  color: $primary-color;
+}
