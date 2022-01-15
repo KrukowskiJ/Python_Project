@@ -1,18 +1,18 @@
 {% extends 'layout.html' %}
 
-    {% block nav %}
-              <a href="/{{ sex }}/new">New</a>
-              <a href="/{{ sex }}/sales" style="color:#F38383">Sales</a>
-              <a href="/{{ sex }}/clothes">Clothes</a>
-              <a href="/{{ sex }}/shoes">Shoes</a>
-              <a href="/{{ sex }}/accessories">Accessories</a>
-              <a href="/{{ sex }}/lookbook">Look Book</a>
-    {% endblock %}
-
+{% block style %}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+{% endblock %}
 {% block container %}
         {% if sex == "men"%}
-                <img  height="100%" width="100%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_man_novedades_-1.jpg?20211211024008">
+                <img   height="100%" width="100%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_man_novedades_-1.jpg?20211211024008">
+
         {% elif sex == "women"%}
-                <img  height="100%" width="100%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
+                <img   height="100%" width="100%" src="https://static.bershka.net/4/static/images/home/2021/1210/D_slide_woman_goingout_-1.jpg">
         {% endif %}
  {% endblock %}
+
+
+
+
+

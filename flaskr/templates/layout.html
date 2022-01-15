@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FlaskApp</title>
+    <title>Python Squad Store</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+         {% block style %}{% endblock %}
+
 </head>
 <body>
-    <div class="header">
+    <div class="header" id="header">
          <form class="sex-switch" action="/">
                 <a href="/men">Men</a>
                 <a href="/women">Women</a>
@@ -14,14 +17,77 @@
          <h1 class="company_name">Python</h1>
          <img height="90%" width="90px" src="/static/img/logo_transparent.png" alt="Python Squad">
          <h1 class="company_name">Squad</h1>
-        <a href="cart" class="cart"><img height="40px" width="40px" src="/static/img/cart.svg" alt="Cart" ></a>
-        <a href={% if current_user.is_authenticated %}{{"user"}}{% else %}{{"panel"}}{% endif %} class="login"><img height="44px" width="44px" src="/static/img/account.png" alt="Cart" ></a>
+        <a href={{"/cart"}} class="cart"><img height="40px" width="40px" src="/static/img/cart.svg" alt="Cart" ></a>
+        <a href={% if current_user.is_authenticated %}{{"/user"}}{% else %}{{"/panel"}}{% endif %} class="login"><img height="44px" width="44px" src="/static/img/account.png" alt="Cart" ></a>
     </div>
     <div class="container">
+
         <div class="nav">
-               {% block nav %}{% endblock %}
+              <a href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</a>
+              <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
+              <a href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</a>
+              <a href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</a>
+              <a href={% if items %}{{"accessories"}}{% else %}{{ sex +"/accessories"}}{% endif %}>Accessories</a>
+              <a href={% if items %}{{"lookbook"}}{% else %}{{ sex +"/lookbook"}}{% endif %}>Look Book</a>
+
+
+        <a onclick="Scroll('newsletter')" class="button-dark dark-skin" ><span></span></a>
         </div>
+
+        <div class="box_to_change">
                {% block container %}{% endblock %}
+        </div>
+
     </div>
+
+
+
+    <div id="newsletter" class="newsletter_box">
+    <h1>10% discount for our subscribers!</h1>
+        <h3>Subscribe to our newsletter and you’ll get a 10% off your next order, exclusive promos and many good news!</h3>
+         <form method="POST" action="{{ url_for('subscribe') }}" >
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+                <div style="margin-top: 15px">
+                    <input  type="text" name="name" id="name" placeholder="Your Name" >
+                </div>
+                <div style="margin-top: 5px">
+                    <input  type="email" name="email" id="email" placeholder="Your Email" >
+                </div>
+                <div style="margin-top: 15px">
+                    <input type ="submit" name="subscribe" value="Subscribe">
+                </div>
+                <div style="margin-top: 5px">
+                    <input type ="submit"  name="unsubscribe"  value="Unsubscribe">
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="footer_box">
+         Contact:
+         <div>
+            00 800 341 12 05
+            From Mondays to Fridays from 09:00 to 18:00.
+         </div>
+         <div>
+            Send email
+            We'll reply asap
+         </div>
+         <div>
+            Terms and conditions of purchase • Privacy policy • Cookies policy • Cookie settings • SiteMap
+         </div>
+            Wykonał: Jakub Krukowski WCY19IJ1S1
+         <a onclick="Scroll('header')" class="button-light light-skin" ><span></span></a>
+    </div>
+
+    <script>
+        function Scroll(x) {
+            document.getElementById(x).scrollIntoView({
+                  behavior: 'smooth', // smooth scroll
+                  block: 'start' // the upper border of the element will be aligned at the top of the visible part of the window of the scrollable area.
+            })
+        }
+    </script>
 </body>
 </html>

@@ -11,7 +11,7 @@ app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 db = SQLAlchemy(app)
 
 
-from flaskr.models import User, Product
+from flaskr.models import User, Product, Newsletter
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
@@ -19,15 +19,15 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    # since the user_id is just the primary key of our user table, use it in the query for the user
     return User.query.get(int(user_id))
-
 
 db.create_all()
 db.session.commit()
-admin = Admin(app, name='microblog', template_mode='bootstrap4')
+admin = Admin(app, name='FLASK SQUAD SHOP - ADMINISTRATION PANEL', template_mode='bootstrap4')
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Product, db.session))
+admin.add_view(ModelView(Newsletter, db.session))
+
 
 # blueprint for auth routes in our app
 from flaskr.auth import auth as auth_blueprint

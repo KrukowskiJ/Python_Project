@@ -21,20 +21,8 @@ class Product(db.Model):
     def __repr__(self):
         return f"Product('{self.name}', '{self.sex}' , '{self.category}')"
 
-class Color(db.Model):
+class Newsletter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
-
-    def __repr__(self):
-        return f"Color('{self.name}')"
-
-class Size(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
-
-    def __repr__(self):
-        return f"Size('{self.name}')"
-
-class Available_Product(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80))
+    email = db.Column(db.String(120), nullable=False,unique=True)
 

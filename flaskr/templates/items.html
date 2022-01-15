@@ -1,27 +1,23 @@
 {% extends 'layout.html' %}
 
-    {% block nav %}
-              <a href="new">New</a>
-              <a href="sales" style="color:#F38383">Sales</a>
-              <a href="clothes">Clothes</a>
-              <a href="shoes">Shoes</a>
-              <a href="accessories">Accessories</a>
-              <a href="lookbook">Look Book</a>
-    {% endblock %}
+{% block style %}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/items.css') }}">
+{% endblock %}
 
     {% block container %}
 
         <div class="items" >
                     {% for el in items_table %}
                         <div class="item" >
-                            <img src="{{ el.url }}">
+                            <img  src="{{ el.url }}">
                             <div class="item_data">
-                                <p>{{ el }}</p>
                                 <p>{{ el.name }}</p>
-                                <p>DESC {{ el.desc }}</p>
-                                <p>Price: {{ el.price }}</p>
+                                <br>
+                                <p>{{ el.desc }}</p>
+                                <br>
+                                <p>{{ el.price }}PLN</p>
                             </div>
-                            <form action="{{ url_for('AddCart') }}" method="post">
+                            <form class="add_button" action="{{ url_for('AddCart') }}" method="post">
                                 <input type="hidden" name="product_name" value="{{ el.name }}">
                                 <input type="hidden" name="product_price" value="{{ el.price }}">
                                 <button type="submit">Add to cart</button>
@@ -30,3 +26,18 @@
                     {% endfor %}
         </div>
     {% endblock %}
+
+{% block newsletter %}
+    <div class="newsletter_box">
+
+       <h1>newslet22ter</h1>
+    </div>
+
+ {% endblock %}
+
+{% block footer %}
+     <div class="footer_box">
+
+       <h1>foot</h1>
+    </div>
+ {% endblock %}

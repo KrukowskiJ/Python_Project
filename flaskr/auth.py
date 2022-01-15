@@ -1,4 +1,4 @@
-from flask import  Blueprint,render_template, request,  url_for, redirect, flash
+from flask import  Blueprint,render_template, request,  url_for, redirect, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from flaskr.models import User
 from flaskr import db
@@ -8,18 +8,26 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login')
 def login():
-    print('signup!')
-    return render_template('auth/login.html')
+    return render_template('auth/login.html',sex="men")
 
 @auth.route('/signup')
 def signup():
-    print('signup!')
-    return render_template('auth/register.html')
+    return render_template('auth/register.html',sex="men")
 
 @auth.route('/logout')
 def logout():
+    session.pop('email', None)
     logout_user()
-    return redirect(url_for('panel'))
+    return redirect('panel')
+
+@auth.route('/user',methods = ['POST', 'GET'])
+def user():
+    user = current_user
+    return render_template('profile.html',sex='men',user=user)
+
+@auth.route('/panel',methods = ['POST', 'GET'])
+def panel():
+    return render_template('loginpanel.html',sex='men')
 
 @auth.route('/signup', methods=['POST'])
 def signup_post():
@@ -45,18 +53,17 @@ def signup_post():
 
 @auth.route('/login', methods=['POST'])
 def login_post():
-    # login code goes here
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
 
     user = User.query.filter_by(email=email).first()
 
-    # check if the user actually exists
-    # take the user-supplied password, hash it, and compare it to the hashed password in the database
+    # check if the user actually exists, take the user-supplied password, hash it, and compare it to the hashed password in the database
     if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
         return redirect(url_for('auth.login'))  # if the user doesn't exist or password is wrong, reload the page
 
     login_user(user, remember=remember)
-    return redirect(url_for('user'))
+    print(current_user)
+    return redirect('user')
