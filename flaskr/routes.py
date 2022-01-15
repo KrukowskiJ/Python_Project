@@ -1,9 +1,9 @@
 import os
 from flask import  Blueprint, render_template, request,  url_for, redirect
 from flaskr import app
-from flaskr.models import Product
-
-
+from flaskr.models import Product,Newsletter
+from flask_login import login_user, current_user,logout_user
+from flaskr import db
 class Cart:
   def __init__(self, count, sum, items):
     self.count = count
@@ -13,7 +13,7 @@ class Cart:
 global_cart = Cart(0,0,'')
 @app.route('/addcart', methods=['POST'])
 def AddCart():
-    product_name =request.form.get('product_name')
+    product_name = request.form.get('product_name')
     product_price = int(request.form.get('product_price'))
     global_cart.sum += product_price
     global_cart.items.append(product_name)
@@ -24,9 +24,21 @@ def AddCart():
 def redirectx():
     return redirect("/men")
 
-@app.route('/<x>/profile')
-def profile(x):
-    return render_template('profile.html')
+@app.route('/newsletter', methods=['GET', 'POST'])
+def subscribe():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        if request.form.get('subscribe'):
+            new_subscriber = Newsletter(email=email, name=name)
+            db.session.add(new_subscriber)
+            db.session.commit()
+        elif request.form.get('unsubscribe'):
+            to_delete = Newsletter.query.filter(Newsletter.email == email)
+            if to_delete[0]:
+                db.session.delete(to_delete[0])
+                db.session.commit()
+    return redirect("/men")
 
 @app.route("/<sex>", methods=['GET', 'POST'])
 def start(sex):
@@ -39,12 +51,18 @@ def itemspage(sex, items):  # put application's code here
 
 @app.route('/cart')
 def cart():
-    return render_template('cart.html',cart=global_cart,items=1)
+    return render_template('cart.html', cart=global_cart,  sex='men')
 
-@app.route('/user',methods = ['POST', 'GET'])
-def user():
-    return render_template('profile.html')
 
-@app.route('/panel',methods = ['POST', 'GET'])
-def panel():
-    return render_template('loginpanel.html')
+
+
+# TODO
+# KOSZYK ODEJMOWANIE DODAWANIE PRODUKTOW - ZWIEKSZANIE ILOSCI W KOSZYKU
+# WYSWIETLANIE PROFILU UZYTKOWNIKA
+# WYGLAD WSZYSTKIEGO
+# NEWSLETTER FORMSY
+# STOPKA NA DOLE
+# KOSZYK CZYSCZENIE PRZY WYLOGOWYWANIU - ZAPISANIE W BAZIE DANYCH
+# HISTORIA ZAMOWIEN - BAZA DANYCH
+# FAVOURITES ITEMS
+# LUPKA DO SZUKANIA
