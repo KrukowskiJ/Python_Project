@@ -1,11 +1,57 @@
 @import "settings.scss";
 
+.card_container{
+margin-top:5vh;
+  margin-right:12vw;
+}
 .card{
-  height: 30vh;
-  width: 40vw;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:10px;
+  height: 70vh;
+  width: 60vw;
   margin: auto;
   background-color: $compname-color;
 }
 .name{
   color: $primary-color;
+}
+.logout_btn{
+  margin-top: 100px;
+  text-decoration: none;
+  bottom: 50px;
+  color: $primary-color;
+}
+
+.close {
+  cursor:pointer;
+  position: absolute;
+  margin-left: 58vw;
+  margin-bottom: 65vh;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  content: '';
+  height: 40px;
+  width: 3px;
+  background-color: $primary-color;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.logo_color{
+  color:$logo-color;
 }

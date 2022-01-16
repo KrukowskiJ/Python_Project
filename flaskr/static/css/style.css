@@ -144,7 +144,7 @@ body {
 .button-light span {
   cursor: pointer;
   position: absolute;
-  top: 60px;
+  top: 0px;
   left: -47vw;
   box-sizing: border-box;
   width: 24px;
@@ -179,6 +179,31 @@ body {
     -webkit-transform: rotate(135deg) translate(-20px, 20px);
     transform: rotate(135deg) translate(-20px, 20px);
   }
+}
+.login_btn {
+  background: transparent;
+  padding: 15px;
+  border-radius: 20px;
+  border: 2px solid #F28383;
+  color: #F28383;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 32px;
+}
+
+.input_desc {
+  color: #FBFBEB;
+  margin: 5px;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+input {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
