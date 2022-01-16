@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block style %}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/lookbook.css') }}">
+{% endblock %}
+
+    {% block container %}
+        <div class="containercarousel">
+                <input type="radio" name="slider"  autofocus id="item-1" checked>
+                <input type="radio" name="slider" id="item-2">
+                <input type="radio" name="slider" id="item-3">
+                <input type="radio" name="slider" id="item-4">
+                <input type="radio" name="slider" id="item-5">
+              <div class="cards">
+                <label class="card" for="item-1" id="img1">
+                  <img src="https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="song">
+                </label>
+                <label class="card" for="item-2" id="img2">
+                  <img src="https://images.pexels.com/photos/581087/pexels-photo-581087.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="song">
+                </label>
+                <label class="card" for="item-3" id="img3">
+                  <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="song">
+                </label>
+                <label class="card" for="item-4" id="img4">
+                  <img src="https://images.pexels.com/photos/934063/pexels-photo-934063.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="song">
+                </label>
+                <label class="card" for="item-5" id="img5">
+                  <img src="https://images.pexels.com/photos/1127000/pexels-photo-1127000.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="song">
+                </label>
+              </div>
+            </div>
+    {% endblock %}
