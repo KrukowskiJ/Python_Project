@@ -6,9 +6,6 @@ from flask_login import login_user, current_user,logout_user
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/login')
-def login():
-    return render_template('auth/login.html',sex="men")
 
 @auth.route('/signup')
 def signup():
@@ -49,7 +46,7 @@ def signup_post():
     db.session.add(new_user)
     db.session.commit()
 
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('auth.panel'))
 
 @auth.route('/login', methods=['POST'])
 def login_post():
@@ -62,8 +59,41 @@ def login_post():
     # check if the user actually exists, take the user-supplied password, hash it, and compare it to the hashed password in the database
     if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
-        return redirect(url_for('auth.login'))  # if the user doesn't exist or password is wrong, reload the page
+        return redirect(url_for('auth.panel'))  # if the user doesn't exist or password is wrong, reload the page
 
     login_user(user, remember=remember)
     print(current_user)
     return redirect('user')
+
+@auth.route('/change_email',methods = ['POST', 'GET'])
+def change_email():
+    user = current_user
+    return render_template('profile.html',sex='men',user=user, change_email=1)
+
+@auth.route('/change_nickname',methods = ['POST', 'GET'])
+def change_nickname():
+    user = current_user
+    return render_template('profile.html',sex='men',user=user, change_nickname=1)
+
+@auth.route('/update_user',methods = ['POST', 'GET'])
+def update_user():
+    if request.method == 'POST':
+        if request.form.get('name'):
+            name = request.form['name']
+            print(name)
+            current_user.name = name
+            db.session.commit()
+        elif request.form.get('email'):
+            email = request.form['email']
+            print(email)
+            user = User.query.filter_by(email=email).first()
+            if not user:
+                current_user.email = email
+                db.session.commit()
+            elif user:
+                return render_template('profile.html', sex='men', change_email=1,wrong_email=1)
+    return redirect("/user")
+
+@auth.route('/close',methods = ['POST', 'GET'])
+def close_button():
+    return redirect("/user")

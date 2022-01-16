@@ -16,7 +16,7 @@ def AddCart():
     product_name = request.form.get('product_name')
     product_price = int(request.form.get('product_price'))
     global_cart.sum += product_price
-    global_cart.items.append(product_name)
+    global_cart.items.append({'name':product_name,'price':product_price})
     global_cart.count += 1
     return redirect("/cart")
 
@@ -58,11 +58,13 @@ def cart():
 
 # TODO
 # KOSZYK ODEJMOWANIE DODAWANIE PRODUKTOW - ZWIEKSZANIE ILOSCI W KOSZYKU
-# WYSWIETLANIE PROFILU UZYTKOWNIKA
-# WYGLAD WSZYSTKIEGO
-# NEWSLETTER FORMSY
-# STOPKA NA DOLE
-# KOSZYK CZYSCZENIE PRZY WYLOGOWYWANIU - ZAPISANIE W BAZIE DANYCH
+# KOSZYK CZYSCZENIE PRZY WYLOGOWYWANIU - ZAPISANIE W BAZIE DANYCH       !!!!!!!
 # HISTORIA ZAMOWIEN - BAZA DANYCH
 # FAVOURITES ITEMS
 # LUPKA DO SZUKANIA
+
+
+# WYGLAD WSZYSTKIEGO
+# WYSWIETLANIE PROFILU UZYTKOWNIKA
+# STOPKA NA DOLE
+# NEWSLETTER FORMSY
