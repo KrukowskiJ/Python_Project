@@ -1,23 +1,24 @@
 {% extends 'layout.html' %}
 
 {% block style %}
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/cart.css') }}">
 {% endblock %}
 
 {% block container %}
-        <div class="items" >
-            <h1>MY SHOPPING CART </h1>
-        {% if cart.count %}
-            <h2>Items in your cart: </h2>
-            {% for el in cart.items %}
-                            <div class="item_data">
-                                <p>{{ el }}</p>
-                            </div>
-            {% endfor %}
-            <h3>Cart quantity: {{cart.count}} items</h3>
-            <h3>Cart value: {{cart.sum}} PLN</h3>
-        {% else %}
-           <h2>No Items in your cart yet</h2>
-        {% endif %}
+        <div class="cart_back" >
+                <h1 class="title">MY SHOPPING CART </h1>
+            {% if cart.count %}
+                <h2>Items in your cart: </h2>
+                {% for el in cart.items %}
+                                <div class="cart_item">
+                                    <p>{{ el.name }}</p>
+                                    <p>{{ el.price }}</p>
+                                </div>
+                {% endfor %}
+                <h3>Cart quantity: {{cart.count}} items</h3>
+                <h3>Cart value: {{cart.sum}} PLN</h3>
+            {% else %}
+               <h2>No Items in your cart yet</h2>
+            {% endif %}
         </div>
  {% endblock %}
