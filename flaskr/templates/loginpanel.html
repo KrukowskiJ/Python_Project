@@ -1,16 +1,44 @@
 {% extends 'layout.html' %}
 
 {% block style %}
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/profile.css') }}">
 {% endblock %}
 
 
 {% block container %}
-    LOGGED OUT
-    <a href="/login" class="navbar-item">
-                                Login
-                            </a>
-    <a href="/signup" class="navbar-item">
-                                Sign Up
-                            </a>
+    <div class="card_container">
+        <div class="card" >
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div >
+                        <p class="name">{{ messages[0] }}</p>
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <h1 class="name" style="margin:15px; text-transform:uppercase; letter-spacing: 3px">Log in or create an account</h1>
+
+            <form autocomplete="off" method="POST" action="/login" style="display: flex; flex-direction:column; justify-content: center; align-items: center">
+                <div style="margin-bottom:15px;">
+                    <p class="input_desc" >EMAIL</p>
+                    <input  type="email" name="email" placeholder="Your Email" autofocus="">
+                </div>
+                <div style="margin-bottom:15px;">
+                    <p class="input_desc" >PASSWORD</p>
+                    <input  type="password" name="password" placeholder="Your Password">
+                </div>
+                <div style="margin-top:10px; display: flex; flex-direction: row;">
+                    <input  type="checkbox" name="remember" style="margin-top:2px;">
+                    <p class="logo_color" style="margin-left:10px;">Remember me</p>
+                </div>
+                <button class="login_btn">Log in</button>
+            </form>
+            <div style="display: flex; flex-direction: row; margin: 25px;">
+                <p class="name" style="font-size: 18px;">Don't have an account?</p>
+                <a class="logo_color" style="font-weight:bold; margin-left:10px;text-decoration: none; font-size: 18px;" href="/signup" class="navbar-item">
+                                        Register
+                                    </a>
+            </div>
+            <p class="name">By logging / signing in I agree to connect my account in accordance with the <b class="logo_color">Privacy Policy</b></p>
+        </div>
+    </div>
  {% endblock %}

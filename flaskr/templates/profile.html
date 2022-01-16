@@ -5,16 +5,52 @@
 {% endblock %}
 
 {% block container %}
-
+<div class="card_container">
     <div class="card" >
-    <h1 class="name">{% if user %}{{ user.name }}{% else %}{{ 'Guest' }}{% endif %}</h1>
+    {% if change_nickname %}
+        <h2 class="name" style="margin:15px; letter-spacing: 1px">Choose your new nickname</h2>
+         <form method="POST" action="{{ url_for('auth.update_user') }}" >
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+                <div style="margin-top: 15px">
+                    <p class="input_desc" >NICKNAME</p>
+                    <input  type="text" name="name" id="name" placeholder="Your new nickname" autofocus="">
+                </div>
+                 <div style="margin-top: 5px">
+                    <input class="login_btn" style="margin-top: 100px" type ="submit"  name="submit"  value="Submit">
+                </div>
+            </div>
 
-
-    <a href="/logout" class="navbar-item">
-                                Logout
-    </a>
-
+        </form>
+        <a href="{{"user"}}" class="close"></a>
+    {% elif change_email %}
+        {% if wrong_email %}
+            <h4 class="name">That email address already exists! Please try to log in or change it.</h4>
+        {% endif %}
+         <h2 class="name" style="margin:15px; letter-spacing: 1px">Choose your new email address</h2>
+         <form method="POST" action="{{ url_for('auth.update_user') }}" >
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+                <div style="margin-top: 5px">
+                    <p class="input_desc" >EMAIL</p>
+                    <input  type="email" name="email" id="email" placeholder="Your new email" autofocus="" >
+                </div>
+                 <div style="margin-top: 5px">
+                    <input class="login_btn" style="margin-top: 100px" type ="submit"  name="submit"  value="Submit">
+                </div>
+            </div>
+        </form>
+        <a href="{{"user"}}" class="close"></a>
+    {% else %}
+        <h1 class="name" style="margin:10px">{% if user %}{{ user.name }}{% else %}{{ 'Guest' }}{% endif %}</h1>
+        <form class="change_button" action="{{ url_for('auth.change_nickname') }}" method="post">
+            <button type="submit">Change your nickname</button>
+        </form>
+        <h2 class="name" style="margin:20px; margin-top: 40px;">{% if user %}{{ user.email }}{% else %}{{ 'Guest' }}{% endif %}</h2>
+        <form class="change_button" action="{{ url_for('auth.change_email') }}" method="post">
+            <button type="submit">Change your email</button>
+        </form>
+        <a href="/logout" class="login_btn" style="margin-top: 100px;">Log out</a>
+    {% endif %}
 
     </div>
-
+</div>
  {% endblock %}

@@ -1,44 +1,39 @@
 {% extends 'layout.html' %}
 
 {% block style %}
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/profile.css') }}">
 {% endblock %}
 
-    {% block container %}
+{% block container %}
+    <div class="card_container">
+        <div class="card" >
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <p class="name">{{ messages[0] }}. Go to <a class="logo_color" style="text-decoration: none;" href="{{ url_for('auth.panel') }}">login page.</a></p>
+                {% endif %}
+            {% endwith %}
 
-        <div class="items" >
-            <div class="column is-4 is-offset-4">
-    <h3 class="title">Sign Up</h3>
-    <div class="box">
-        {% with messages = get_flashed_messages() %}
-{% if messages %}
-    <div class="notification is-danger">
-        {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+            <h1 class="name" style="margin:15px; text-transform:uppercase; letter-spacing: 3px">Registration</h1>
+
+            <form method="POST" action="/signup" style="display: flex; flex-direction:column; justify-content: center; align-items: center">
+                <div style="margin-bottom:15px;">
+                    <p class="input_desc">EMAIL</p>
+                    <input type="email" name="email" placeholder="Email" autofocus="">
+                </div>
+
+                <div style="margin-bottom:15px;">
+                    <p class="input_desc" >NICKNAME</p>
+                    <input type="text" name="name" placeholder="Name" autofocus="">
+                </div>
+
+                <div style="margin-bottom:15px;">
+                    <p class="input_desc">PASSWORD</p>
+                    <input  type="password" name="password" placeholder="Password">
+                </div>
+                <button class="login_btn">Create account</button>
+
+            </form>
+          <a href="{{"panel"}}" class="close"></a>
     </div>
-{% endif %}
-{% endwith %}
-        <form method="POST" action="/signup">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
-                </div>
-            </div>
-
-            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
-        </form>
     </div>
-</div>
-        </div>
     {% endblock %}
