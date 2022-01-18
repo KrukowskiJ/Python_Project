@@ -44,6 +44,11 @@ def subscribe():
 def start(sex):
     return render_template('index.html', sex=sex)
 
+@app.route('/<sex>/lookbook/<p>', methods=['GET', 'POST'])
+def lookbook(sex,p):  # put application's code here
+    return render_template('lookbook.html', sex=sex, items=1, index=p )
+
+
 @app.route('/<sex>/<items>', methods=['GET', 'POST'])
 def itemspage(sex, items):  # put application's code here
     data = Product.query.filter((Product.sex == sex) & (Product.category == items))
@@ -63,6 +68,7 @@ def cart():
 # FAVOURITES ITEMS
 # LUPKA DO SZUKANIA
 
+#kody rabatowe
 
 # WYGLAD WSZYSTKIEGO
 # WYSWIETLANIE PROFILU UZYTKOWNIKA

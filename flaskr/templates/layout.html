@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>Python Squad Store</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+    {% block changestyle %}
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    {% endblock %}
          {% block style %}{% endblock %}
 
 </head>
@@ -28,7 +30,7 @@
               <a href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</a>
               <a href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</a>
               <a href={% if items %}{{"accessories"}}{% else %}{{ sex +"/accessories"}}{% endif %}>Accessories</a>
-              <a href={% if items %}{{"lookbook"}}{% else %}{{ sex +"/lookbook"}}{% endif %}>Look Book</a>
+              <a href={% if items %}{{"lookbook"}}{% else %}{{ sex +"/lookbook/1"}}{% endif %}>Look Book</a>
 
 
         <a onclick="Scroll('newsletter')" class="button-dark dark-skin" ><span></span></a>
