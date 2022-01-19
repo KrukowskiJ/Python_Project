@@ -9,8 +9,13 @@
   height: 80vh;
   border: 2px solid black;
   background-color: $compname-color;
+  overflow: scroll;
+  overflow-x: hidden;
 }
-
+.cart_items{
+    overflow: scroll;
+  overflow-x: hidden;
+}
 .title{
   color: $primary-color;
   margin:15px;
