@@ -1,24 +1,41 @@
 import os
-from flask import  Blueprint, render_template, request,  url_for, redirect
+from flask import  Blueprint, render_template, request,  url_for, redirect, session
 from flaskr import app
 from flaskr.models import Product,Newsletter
 from flask_login import login_user, current_user,logout_user
 from flaskr import db
-class Cart:
-  def __init__(self, count, sum, items):
-    self.count = count
-    self.sum = sum
-    self.items = [items]
 
-global_cart = Cart(0,0,'')
+def AddNewDict(a,b):
+    if isinstance(a,list) and isinstance(b,list):
+        return a+b
+    elif isinstance(a,dict) and isinstance(b,dict):
+        return dict(list(a.items())+list(b.items()))
+    return False
+
 @app.route('/addcart', methods=['POST'])
 def AddCart():
-    product_name = request.form.get('product_name')
-    product_price = int(request.form.get('product_price'))
-    global_cart.sum += product_price
-    global_cart.items.append({'name':product_name,'price':product_price})
-    global_cart.count += 1
-    return redirect("/cart")
+    try:
+        product_id = request.form.get('product_name')
+        quantity = 1
+        product = Product.query.filter_by(name=product_id).first()
+
+        if product_id and product and request.method == 'POST':
+            NewProduct = {product_id : { 'price': product.price, 'image': product.url, 'quantity': quantity, 'description': product.desc}}
+            if 'cart' in session:
+                if product_id in session['cart']:
+                    for key, item in session['cart'].items():
+                        if key == product_id:
+                            session.modified = True
+                            item['quantity'] += 1
+                else:
+                    session['cart'] = AddNewDict(session['cart'], NewProduct)
+            else:
+                session['cart'] = NewProduct
+                return redirect(request.referrer)
+    except Exception as e:
+        print(e)
+    finally:
+        return redirect(request.referrer)
 
 @app.route('/')
 def redirectx():
@@ -44,9 +61,9 @@ def subscribe():
 def start(sex):
     return render_template('index.html', sex=sex)
 
-@app.route('/<sex>/lookbook/<p>', methods=['GET', 'POST'])
-def lookbook(sex,p):  # put application's code here
-    return render_template('lookbook.html', sex=sex, items=1, index=p )
+@app.route('/<sex>/lookbook', methods=['GET', 'POST'])
+def lookbook(sex):  # put application's code here
+    return render_template('lookbook.html', sex=sex, items=1)
 
 
 @app.route('/<sex>/<items>', methods=['GET', 'POST'])
@@ -56,7 +73,17 @@ def itemspage(sex, items):  # put application's code here
 
 @app.route('/cart')
 def cart():
-    return render_template('cart.html', cart=global_cart,  sex='men')
+
+    if 'cart' in session:
+        cart = session['cart']
+        return render_template('cart.html',  sex='men', cart=cart,quantity=0, suma=0)
+    else:
+        return render_template('cart.html', sex='men')
+
+@app.route('/cartdelete')
+def cartdelete():
+    session.pop('cart',None)
+    return redirect("/cart")
 
 
 
