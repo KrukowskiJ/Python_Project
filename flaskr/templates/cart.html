@@ -22,6 +22,10 @@
                                 <p>x{{ el.quantity }}</p><br>
 
                             </div>
+                            <form  method="post">
+                                <input type="hidden" name="product_name" value="{{ key }}">
+                                <button type="submit">Delete item</button>
+                            </form>
                         </div>
                     {% endfor %}
                     </div>

@@ -8,7 +8,40 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
     {% endblock %}
          {% block style %}{% endblock %}
+<style>
+ul, #myUL {
+  list-style-type: none;
+}
+li{
+    list-style: none;
+}
 
+.box {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.box::before {
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.check-box::before {
+  color: dodgerblue;
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+</style>
 </head>
 <body>
     <div class="header" id="header">
@@ -25,10 +58,39 @@
     <div class="container">
 
         <div class="nav">
-              <a href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</a>
-              <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
-              <a href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</a>
-              <a href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</a>
+
+
+
+                  <li><span class="box" href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</span>
+                    <ul class="nested">
+                        <a href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</a>
+                        <a href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</a>
+                        <a href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</a>
+                    </ul>
+                  </li>
+                <li><span class="box" href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %}>Sales</span>
+                    <ul class="nested">
+                        <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
+                        <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
+                        <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
+                    </ul>
+                </li>
+                <li><span class="box" href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</span>
+                    <ul class="nested">
+                        <a href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</a>
+                        <a href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</a>
+                        <a href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</a>
+                    </ul>
+                </li>
+                <li><span class="box" href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</span>
+                    <ul class="nested">
+                        <a href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</a>
+                        <a href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</a>
+                        <a href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</a>
+                    </ul>
+                </li>
+            <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
+
               <a href={% if items %}{{"accessories"}}{% else %}{{ sex +"/accessories"}}{% endif %}>Accessories</a>
               <a href={% if items %}{{"lookbook"}}{% else %}{{ sex +"/lookbook"}}{% endif %}>Look Book</a>
 
@@ -90,6 +152,15 @@
                   behavior: 'smooth', // smooth scroll
                   block: 'start' // the upper border of the element will be aligned at the top of the visible part of the window of the scrollable area.
             })
+        }
+        var toggler = document.getElementsByClassName("box");
+        var i;
+
+        for (i = 0; i < toggler.length; i++) {
+          toggler[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("check-box");
+          });
         }
     </script>
 </body>
