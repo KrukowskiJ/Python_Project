@@ -66,10 +66,10 @@ def lookbook(sex):  # put application's code here
     return render_template('lookbook.html', sex=sex, items=1)
 
 
-@app.route('/<sex>/<items>', methods=['GET', 'POST'])
-def itemspage(sex, items):  # put application's code here
-    data = Product.query.filter((Product.sex == sex) & (Product.category == items))
-    return render_template('items.html', sex=sex, items=items,items_table=data)
+@app.route('/<sex>/<items>/<subcategory>', methods=['GET', 'POST'])
+def itemspage(sex, items, subcategory):  # put application's code here
+    data = Product.query.filter((Product.sex == sex) & (Product.category == items) & (Product.subcategory == subcategory))
+    return render_template('items.html', sex=sex, items=items, subcategory=subcategory, items_table=data)
 
 @app.route('/cart', methods=['POST','GET'])
 def cart():

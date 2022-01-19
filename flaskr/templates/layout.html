@@ -12,10 +12,33 @@
 ul, #myUL {
   list-style-type: none;
 }
-li{
+li {
     list-style: none;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #3A3C38;
+    display: block;
+    transition: 0.3s;
 }
+li a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #3A3C38;
+    display: block;
+    transition: 0.3s;
+  }
+li a:hover {
+    font-weight: 500;
+    font-size:16px;
+  }
 
+li:hover {
+    font-weight: 700;
+    font-size:25px;
+  }
 .box {
   cursor: pointer;
   -webkit-user-select: none; /* Safari 3.1+ */
@@ -63,38 +86,47 @@ li{
 
                   <li><span class="box" href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</span>
                     <ul class="nested">
-                        <a href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</a>
-                        <a href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</a>
-                        <a href={% if items %}{{"new"}}{% else %}{{ sex +"/new"}}{% endif %}>New</a>
+                        <a href={{"/"+ sex + "/new/jackets" }}>Jackets and coats</a>
+                        <a href={{"/"+ sex + "/new/tshirts" }}>T-shirts</a>
+                        <a href={{"/"+ sex + "/new/jeans" }}>Jeans</a>
                     </ul>
                   </li>
-                <li><span class="box" href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %}>Sales</span>
+                <li style="color:#F38383"><span class="box" href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %}>Sales</span>
                     <ul class="nested">
-                        <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
-                        <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
-                        <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
+                        <a href={{"/"+ sex + "/sales/jackets" }} style="color:#F38383">Jackets and coats</a>
+                        <a href={{"/"+ sex + "/sales/tshirts" }} style="color:#F38383">T-shirts</a>
+                        <a href={{"/"+ sex + "/sales/jeans" }}  style="color:#F38383">Jeans</a>
                     </ul>
                 </li>
                 <li><span class="box" href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</span>
                     <ul class="nested">
-                        <a href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</a>
-                        <a href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</a>
-                        <a href={% if items %}{{"clothes"}}{% else %}{{ sex +"/clothes"}}{% endif %}>Clothes</a>
+                        <a href={{"/"+ sex + "/clothes/jackets" }}>Jackets and coats</a>
+                        <a href={{"/"+ sex + "/clothes/sweaters" }}>Sweaters and cardigans</a>
+                        <a href={{"/"+ sex + "/clothes/tshirts" }}>T-shirts</a>
+                        <a href={{"/"+ sex + "/clothes/shirts" }}>Shirts</a>
+                        <a href={{"/"+ sex + "/clothes/jeans" }}>Jeans</a>
+                        <a href={{"/"+ sex + "/clothes/shorts" }}>Shorts</a>
+                        <a href={{"/"+ sex + "/clothes/trousers" }}>Trousers</a>
                     </ul>
                 </li>
                 <li><span class="box" href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</span>
                     <ul class="nested">
-                        <a href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</a>
-                        <a href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</a>
-                        <a href={% if items %}{{"shoes"}}{% else %}{{ sex +"/shoes"}}{% endif %}>Shoes</a>
+                        <a href={{"/"+ sex + "/shoes/trainers" }}>Trainers</a>
+                        <a href={{"/"+ sex + "/shoes/sneakers" }}>Sneakers</a>
+                        <a href={{"/"+ sex + "/shoes/smart" }}>Smart Shoes</a>
                     </ul>
                 </li>
-            <a href={% if items %}{{"sales"}}{% else %}{{ sex +"/sales"}}{% endif %} style="color:#F38383">Sales</a>
-
-              <a href={% if items %}{{"accessories"}}{% else %}{{ sex +"/accessories"}}{% endif %}>Accessories</a>
-              <a href={% if items %}{{"lookbook"}}{% else %}{{ sex +"/lookbook"}}{% endif %}>Look Book</a>
-
-
+                <li><span class="box" href={% if items %}{{"accessories"}}{% else %}{{ sex +"/accessories"}}{% endif %}>Accessories</span>
+                    <ul class="nested">
+                        <a href={{"/"+ sex + "/accessories/caps" }}>Caps and hats</a>
+                        <a href={{"/"+ sex + "/accessories/jewellery" }}>Jewellery</a>
+                        <a href={{"/"+ sex + "/accessories/glasses" }}>Glasses</a>
+                        <a href={{"/"+ sex + "/accessories/backpacks" }}>Backpacks</a>
+                        <a href={{"/"+ sex + "/accessories/belts" }}>Belts</a>
+                        <a href={{"/"+ sex + "/accessories/socks" }}>Socks</a>
+                    </ul>
+                </li>
+                <a style="text-decoration: none; font-size: 25px; padding: 8px 8px 8px 32px;" href={{"/"+ sex + "/lookbook" }}>Look Book</a>
         <a onclick="Scroll('newsletter')" class="button-dark dark-skin" ><span></span></a>
         </div>
 

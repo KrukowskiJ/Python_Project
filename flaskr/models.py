@@ -14,6 +14,7 @@ class Product(db.Model):
     name = db.Column(db.String(80), unique=True, nullable=False)
     sex = db.Column(db.String(10),  nullable=False)
     category = db.Column(db.String(20), nullable=False)
+    subcategory = db.Column(db.String(20), nullable=False)
     url = db.Column(db.String(120))
     desc = db.Column(db.String(420))
     price = db.Column(db.Integer)
