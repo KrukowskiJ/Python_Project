@@ -6,19 +6,27 @@
 
 {% block container %}
         <div class="cart_back" >
-                <h1 class="title">MY SHOPPING CART </h1>
-            {% if cart.count %}
-                <h2>Items in your cart: </h2>
-                {% for el in cart.items %}
-                                <div class="cart_item">
-                                    <p>{{ el.name }}</p>
-                                    <p>{{ el.price }}</p>
-                                </div>
+
+            <h1 class="title">MY BASKET ( {{ quantity }} )</h1>
+            {% if cart %}
+                {% for key,el in cart.items() %}
+                    <div class="cart_item">
+                        <div class="image-storage">
+                            <img src="{{ el.image }}"/>
+                        </div>
+                        <div class="image-desc">
+                            <p><b>{{ el.price }}PLN</b></p>
+                            <p>{{ key }}</p><br>
+                            <p>{{ el.desc }}</p><br>
+                            <p>x{{ el.quantity }}</p><br>
+
+                        </div>
+                    </div>
                 {% endfor %}
-                <h3>Cart quantity: {{cart.count}} items</h3>
-                <h3>Cart value: {{cart.sum}} PLN</h3>
+                <h3 class="title">TOTAL: {{suma}} PLN</h3>
             {% else %}
                <h2>No Items in your cart yet</h2>
             {% endif %}
+          <a class="title" style="text-decoration: none" href="cartdelete">Clear</a>
         </div>
  {% endblock %}

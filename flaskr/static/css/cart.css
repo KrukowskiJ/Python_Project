@@ -19,6 +19,29 @@
 .cart_item {
   display: flex;
   flex-direction: row;
+  width: 30vw;
+  height: 18vh;
+}
+
+.image-storage {
+  height: 125px;
+  width: 100px;
+  max-height: 250px;
+  max-width: 200px;
+}
+.image-storage img {
+  height: 125px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.image-desc {
+  width: 20vw;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FBFBEB;
 }
 
 /*# sourceMappingURL=cart.css.map */
