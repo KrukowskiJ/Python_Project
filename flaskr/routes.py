@@ -1,7 +1,7 @@
 import os
 from flask import  Blueprint, render_template, request,  url_for, redirect, session
 from flaskr import app
-from flaskr.models import Product,Newsletter
+from flaskr.models import Product,Newsletter, RabatCode
 from flask_login import login_user, current_user,logout_user
 from flaskr import db
 
@@ -71,12 +71,25 @@ def itemspage(sex, items):  # put application's code here
     data = Product.query.filter((Product.sex == sex) & (Product.category == items))
     return render_template('items.html', sex=sex, items=items,items_table=data)
 
-@app.route('/cart')
+@app.route('/cart', methods=['POST','GET'])
 def cart():
-
+    promo = None
+    if request.method == 'POST':
+        code = request.form['code']
+        rabat = RabatCode.query.filter((RabatCode.code == code))
+        for el in rabat:
+            if el.active_status == 1:
+                promo = el.value/100
+    total = 0
+    quantity = 0
     if 'cart' in session:
+        for key, el in session['cart'].items():
+            total += el['price']*el['quantity']
+            quantity += el['quantity']
         cart = session['cart']
-        return render_template('cart.html',  sex='men', cart=cart,quantity=0, suma=0)
+        if promo:
+            total = total * ( 1  - promo)
+        return render_template('cart.html',  sex='men', cart=cart,quantity=quantity, total=total)
     else:
         return render_template('cart.html', sex='men')
 
@@ -84,6 +97,7 @@ def cart():
 def cartdelete():
     session.pop('cart',None)
     return redirect("/cart")
+
 
 
 
