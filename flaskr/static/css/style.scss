@@ -3,6 +3,9 @@
 *{
     margin:0;
 }
+*::-webkit-scrollbar{
+  display: none;
+}
 body{
     background-color: $primary-color;
 }
@@ -51,10 +54,13 @@ body{
 .sex-switch{
   left:10px;
   position: absolute;
+  display: flex;
+  flex-direction: row;
 
   a {
     color: $compname-color;
     padding:5px 15px;
+    margin-right: 10px;
     text-transform: uppercase;
     text-decoration: none;
     background: transparent;
@@ -69,6 +75,10 @@ body{
   }
 }
 
+sex-switch a setx{
+   color: red;
+    background: $compname-color;
+}
 
 .cart{
   right:10px;

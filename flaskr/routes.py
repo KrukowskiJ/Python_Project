@@ -98,20 +98,39 @@ def cartdelete():
     session.pop('cart',None)
     return redirect("/cart")
 
+@app.route('/deleteitem', methods=['POST','GET'])
+def deleteitem():
+    id = request.form.get('product_id')
+    print(id)
+    if 'cart' not in session or len(session['cart']) <= 0:
+        return redirect(url_for('redirectx'))
+    try:
+        session.modified = True
+        for key, item in session['cart'].items():
+            if key == id:
+                session['cart'].pop(key, None)
+    except Exception as e:
+        print(e)
+        return redirect(url_for('cart'))
 
+@app.route('/order', methods=['POST','GET'])
+def order():
+    if 'cart' not in session or len(session['cart']) <= 0:
+        return redirect(url_for('redirectx'))
+    try:
+        cart = session['cart']
+        total = request.form.get('total_price')
+        session.pop('cart',None)
+        return render_template('order.html', sex='men', cart=cart, total=total)
+    except Exception as e:
+        print(e)
+        return redirect(url_for('cart'))
 
 
 
 # TODO
-# KOSZYK ODEJMOWANIE DODAWANIE PRODUKTOW - ZWIEKSZANIE ILOSCI W KOSZYKU
+# save orders to database
 # KOSZYK CZYSCZENIE PRZY WYLOGOWYWANIU - ZAPISANIE W BAZIE DANYCH       !!!!!!!
 # HISTORIA ZAMOWIEN - BAZA DANYCH
 # FAVOURITES ITEMS
 # LUPKA DO SZUKANIA
-
-#kody rabatowe
-
-# WYGLAD WSZYSTKIEGO
-# WYSWIETLANIE PROFILU UZYTKOWNIKA
-# STOPKA NA DOLE
-# NEWSLETTER FORMSY

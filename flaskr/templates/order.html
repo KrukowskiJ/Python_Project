@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block style %}
+     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/cart.css') }}">
+{% endblock %}
+
+{% block container %}
+        <div class="cart_back" >
+
+            <h1 class="title">Your order details</h1>
+            <div class="cart_items">
+                {% if cart %}
+                    {% for key,el in cart.items() %}
+                            <div class="order_item">
+                                <p >{{ key }}</p><br>
+                                <p>{{ el.desc }}</p><br>
+                                <p>x{{ el.quantity }}</p><br>
+                                <p><b>{{ el.price }}PLN</b></p>
+                            </div>
+                    {% endfor %}
+                    </div>
+                    <div >
+                        <h3 class="title">TOTAL: {{total}} PLN</h3>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+ {% endblock %}

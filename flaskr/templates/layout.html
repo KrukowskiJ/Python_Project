@@ -69,8 +69,8 @@ li:hover {
 <body>
     <div class="header" id="header">
          <form class="sex-switch" action="/">
-                <a href="/men">Men</a>
-                <a href="/women">Women</a>
+                <a id="menswitch" href="/men">Men</a>
+                <a id="womenswitch"  href="/women">Women</a>
          </form>
          <h1 class="company_name">Python</h1>
          <img height="90%" width="90px" src="/static/img/logo_transparent.png" alt="Python Squad">
@@ -194,6 +194,13 @@ li:hover {
             this.classList.toggle("check-box");
           });
         }
+        var mensw = document.getElementById("menswitch");
+        var womensw = document.getElementById("womenswitch");
+        {% if sex == "men" %}
+            mensw.parentElement.querySelector(".sex-switcher").classList.toggle("setx");
+        {% else %}
+            womensw.classList.toggle("setx");
+        {% endif %}
     </script>
 </body>
 </html>
