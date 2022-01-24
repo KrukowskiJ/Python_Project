@@ -21,7 +21,7 @@
                             </div>
                             <form class="add_button" action="{{ url_for('AddCart') }}" method="post">
                                 <input type="hidden" name="product_name" value="{{ el.name }}">
-                                <button type="submit">Add to cart</button>
+                                <button class="btn" type="submit">Add to cart</button>
                             </form>
                         </div>
                     {% endfor %}

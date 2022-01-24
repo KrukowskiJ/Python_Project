@@ -61,4 +61,28 @@
   color: #F28383;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  color: #FBFBEB;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 30px;
+}
+
+.flex-items {
+  width: 12vw;
+  color: #FBFBEB;
+}
+.flex-items p {
+  font-size: 14px;
+  font-weight: 200;
+  margin: 5px 0px;
+}
+
 /*# sourceMappingURL=profile.css.map */

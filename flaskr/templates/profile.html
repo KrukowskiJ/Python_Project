@@ -48,7 +48,20 @@
         <form class="change_button" action="{{ url_for('auth.change_email') }}" method="post">
             <button type="submit">Change your email</button>
         </form>
+
+        <div class="flex-container">
+           <div class="flex-items">Invoice ID
+           {% for item in data %} <p>{{  item.invoice }}</p>{%  endfor %}
+           </div>
+           <div class="flex-items">Order Status
+            {% for item in data %} <p>{{  item.status }}</p>{%  endfor %}</div>
+           <div class="flex-items">Order Date
+               {% for item in data %}<p> {{  item.date_created.strftime("%H:%M")}}&nbsp;&nbsp;&nbsp;&nbsp;{{  item.date_created.strftime("%B %d %Y") }}</p>{%  endfor %}
+           </div>
+           </div>
         <a href="/logout" class="login_btn" style="margin-top: 100px;">Log out</a>
+        </div>
+
     {% endif %}
 
     </div>

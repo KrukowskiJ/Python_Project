@@ -47,4 +47,41 @@
   text-align: center;
 }
 
+.btn {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 10px;
+  border: 2px solid #00fefe;
+  border-radius: 20px;
+  bottom: 10px;
+  right: 10px;
+  color: #00fefe;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.btn.ok {
+  background-color: rgba(0, 254, 254, 0.4);
+  color: #fff;
+}
+.btn.ok:after {
+  content: "\e080";
+  color: #fff;
+}
+.btn:hover {
+  padding-right: 25px;
+}
+.btn:hover:after {
+  margin-left: 5px;
+}
+.btn:after {
+  font-family: "simple-line-icons";
+  content: "\e095";
+  transition: all 0.2s ease;
+  position: absolute;
+  color: #00fefe;
+  margin-left: 30px;
+  transition: all 0.2s ease;
+}
+
 /*# sourceMappingURL=items.css.map */

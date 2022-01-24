@@ -11,7 +11,7 @@ app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 db = SQLAlchemy(app)
 
 
-from flaskr.models import User, Product, Newsletter, RabatCode
+from flaskr.models import User, Product, Newsletter, RabatCode, CustomerOrders
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
@@ -28,6 +28,7 @@ admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Product, db.session))
 admin.add_view(ModelView(Newsletter, db.session))
 admin.add_view(ModelView(RabatCode, db.session))
+admin.add_view(ModelView(CustomerOrders, db.session))
 
 # blueprint for auth routes in our app
 from flaskr.auth import auth as auth_blueprint

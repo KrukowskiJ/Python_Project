@@ -1,3 +1,4 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
 * {
   margin: 0;
 }
@@ -36,8 +37,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
 }
-
-a {
+.nav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 14px;
@@ -46,8 +46,7 @@ a {
   display: block;
   transition: 0.3s;
 }
-
-a:hover {
+.nav a:hover {
   font-weight: 500;
   font-size: 16px;
 }
@@ -107,20 +106,93 @@ sex-switch a setx {
 
 .footer_box {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
-  color: #FBFBEB;
-  border-top: 4px dashed #FBFBEB;
-  height: 30vh;
+  align-items: baseline;
+  color: #3A3C38;
   margin: 0;
-  background-color: #3A3C38;
+  padding-top: 20px;
+  background-color: #26272b;
 }
 
+.footer_col {
+  display: flex;
+  flex-direction: column;
+  margin: 0 150px;
+}
+.footer_col h4 {
+  color: #FBFBEB;
+}
+.footer_col a {
+  font-size: 12px;
+  color: #9C9C94;
+  padding: 5px 15px;
+  margin: 5px;
+  float: left;
+  margin-left: -14px;
+}
+
+.wavesfooter {
+  position: relative;
+  text-align: center;
+  background: #3A3C38;
+  color: white;
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: -7px;
+  /*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 150px;
+}
+
+/* Animation */
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+}
 .button-dark span {
   cursor: pointer;
   position: absolute;
-  top: 220px;
+  top: 200px;
   left: 24px;
   box-sizing: border-box;
   width: 24px;
@@ -159,8 +231,8 @@ sex-switch a setx {
 .button-light span {
   cursor: pointer;
   position: absolute;
-  top: 0px;
-  left: -47vw;
+  top: 21vh;
+  left: -80vw;
   box-sizing: border-box;
   width: 24px;
   height: 24px;
@@ -219,6 +291,62 @@ input {
   font-size: 16px;
   padding: 10px;
   border-radius: 10px;
+}
+
+.footer_col .social-icons a {
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  line-height: 40px;
+  margin-right: 0;
+  border-radius: 100%;
+  background-color: #33353d;
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0px;
+  margin-left: 10px;
+}
+
+.social-icons li {
+  list-style: none;
+  padding: 0px;
+  margin: 5px;
+}
+
+.social-icons a {
+  padding: 0px;
+  margin: 0px;
+  background-color: #eceeef;
+  color: #818a91;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.social-icons a:active, .social-icons a:focus, .social-icons a:hover {
+  color: #fff;
+  background-color: #29aafe;
+}
+
+.social-icons a.facebook:hover {
+  background-color: #3b5998;
+}
+
+.social-icons a.twitter:hover {
+  background-color: #00aced;
+}
+
+.social-icons a.linkedin:hover {
+  background-color: #007bb6;
+}
+
+.social-icons a.dribbble:hover {
+  background-color: #ea4c89;
 }
 
 /*# sourceMappingURL=style.css.map */

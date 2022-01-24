@@ -1,10 +1,9 @@
 import os
 from flask import  Blueprint, render_template, request,  url_for, redirect, session
-from flaskr import app
-from flaskr.models import Product,Newsletter, RabatCode
+from flaskr import app, db
+from flaskr.models import Product,Newsletter, RabatCode, CustomerOrders
 from flask_login import login_user, current_user,logout_user
-from flaskr import db
-
+import secrets
 def AddNewDict(a,b):
     if isinstance(a,list) and isinstance(b,list):
         return a+b
@@ -118,8 +117,13 @@ def order():
     if 'cart' not in session or len(session['cart']) <= 0:
         return redirect(url_for('redirectx'))
     try:
+        user_id = current_user.id
+        invoice = secrets.token_hex(5)
         cart = session['cart']
         total = request.form.get('total_price')
+        order = CustomerOrders(invoice=invoice, user_id=user_id, orders=session['cart'])
+        db.session.add(order)
+        db.session.commit()
         session.pop('cart',None)
         return render_template('order.html', sex='men', cart=cart, total=total)
     except Exception as e:

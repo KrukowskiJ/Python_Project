@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Python Squad Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
     {% block changestyle %}
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
@@ -127,7 +128,7 @@ li:hover {
                     </ul>
                 </li>
                 <a style="text-decoration: none; font-size: 25px; padding: 8px 8px 8px 32px;" href={{"/"+ sex + "/lookbook" }}>Look Book</a>
-        <a onclick="Scroll('newsletter')" class="button-dark dark-skin" ><span></span></a>
+        <a onclick="Scroll('footer')" class="button-dark dark-skin" ><span></span></a>
         </div>
 
         <div class="box_to_change">
@@ -160,29 +161,60 @@ li:hover {
         </form>
     </div>
 
+
+    <div class="wavesfooter">
+        <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="#a7d3a6" />
+        <use xlink:href="#gentle-wave" x="48" y="2" fill="#CFE795" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="#ADD2C2" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(38, 39, 43,1)" />
+        </g>
+        </svg>
+        </div>
+    </div>
+
     <div class="footer_box">
 
-         <div style="margin:20px">
-             Contact:
-             <p>+48 525 235 153</p>
-             <p>From Mondays to Fridays from 09:00 to 18:00.</p>
-         </div>
-         <div>
-             <p>Send email We'll reply asap</p>
-             <p>pythonsquad@contact.com</p>
-         </div>
-         <div style="margin:20px">
-             <a>Terms and conditions of purchase     •     Privacy policy     •                    Cookies policy    •     Cookie settings     •     SiteMap</a>
-         </div>
-            Wykonał: Jakub Krukowski WCY19IJ1S1
-         <a onclick="Scroll('header')" class="button-light light-skin" ><span></span></a>
+             <div class="footer_col">
+                 <h4>CONTACT</h4>
+                 <a>+48 525 235 153</a>
+                 <a>From Mondays to Fridays from 09:00 to 18:00.</a>
+                 <hr>
+                 <a>Send email We'll reply asap</a>
+                 <a>pythonsquad@contact.com</a>
+             </div>
+             <div class="footer_col" >
+                 <h4>QUICK LINKS</h4>
+                 <a>About us</a>
+                 <a>Terms and conditions of purchase</a>
+                 <a>Privacy policy</a>
+                 <a>Cookies policy</a>
+                 <a>Contribute</a>
+                 <a id="footer">Sitemap</a>
+             </div>
+             <div class="footer_col" >
+                 <h4>SOCIAL MEDIA</h4>
+                 <ul class="social-icons">
+              <li><a class="facebook" ><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+             </div>
+         <a  onclick="Scroll('header')" class="button-light light-skin" ><span></span></a>
     </div>
 
     <script>
         function Scroll(x) {
             document.getElementById(x).scrollIntoView({
                   behavior: 'smooth', // smooth scroll
-                  block: 'start' // the upper border of the element will be aligned at the top of the visible part of the window of the scrollable area.
+                  block: 'end' // the upper border of the element will be aligned at the top of the visible part of the window of the scrollable area.
             })
         }
         var toggler = document.getElementsByClassName("box");

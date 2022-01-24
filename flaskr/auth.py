@@ -1,6 +1,6 @@
 from flask import  Blueprint,render_template, request,  url_for, redirect, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
-from flaskr.models import User
+from flaskr.models import User, CustomerOrders
 from flaskr import db
 from flask_login import login_user, current_user,logout_user
 
@@ -19,8 +19,8 @@ def logout():
 
 @auth.route('/user',methods = ['POST', 'GET'])
 def user():
-    user = current_user
-    return render_template('profile.html',sex='men',user=user)
+    data = CustomerOrders.query.filter_by(user_id=current_user.id).order_by(CustomerOrders.date_created.desc())
+    return render_template('profile.html', sex='men', user=current_user, data=data)
 
 @auth.route('/panel',methods = ['POST', 'GET'])
 def panel():
