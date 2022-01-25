@@ -131,6 +131,16 @@ def order():
         return redirect(url_for('cart'))
 
 
+@app.route('/invoice', methods=['POST', 'GET'])
+def invoice():
+    try:
+        fv_id = request.form.get('fv_id')
+        order_data = CustomerOrders.query.filter_by(invoice=fv_id).first()
+        return render_template('order.html', sex='men', data=order_data)
+    except Exception as e:
+        print(e)
+        return redirect(url_for('cart'))
+
 
 # TODO
 # save orders to database

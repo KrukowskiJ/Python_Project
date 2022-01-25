@@ -59,18 +59,13 @@ margin-top:5vh;
 
 .flex-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  color: $primary-color;
-  font-weight: 600;
-  font-size: 18px;
-  margin:30px;
+  flex-direction: column;
+  overflow: auto;
+  height:30vh;
 }
-
+.flex-container::-webkit-scrollbar{
+  display: none;
+}
 .flex-items {
 
   width: 12vw;

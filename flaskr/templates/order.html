@@ -6,24 +6,30 @@
 {% endblock %}
 
 {% block container %}
-        <div class="cart_back" >
-
-            <h1 class="title">Your order details</h1>
-            <div class="cart_items">
-                {% if cart %}
-                    {% for key,el in cart.items() %}
-                            <div class="order_item">
-                                <p >{{ key }}</p><br>
-                                <p>{{ el.desc }}</p><br>
-                                <p>x{{ el.quantity }}</p><br>
-                                <p><b>{{ el.price }}PLN</b></p>
-                            </div>
-                    {% endfor %}
-                    </div>
-                    <div >
-                        <h3 class="title">TOTAL: {{total}} PLN</h3>
-                    </div>
-                {% endif %}
+    {% if cart %}
+            <div class="cart_back" >
+                <h1 class="title">Congratulations!</h1>
+                <h4 class="title">You just make succesfull transaction</h4>
+                <h4 class="title">Now wait for email confirmation and your package :)</h4>
             </div>
-        </div>
+    {% else %}
+            <div class="cart_back" >
+                <h1 class="title">Your order details</h1>
+                <div class="cart_items">
+                    {% if data %}
+                        {% for key,el in data.orders.items() %}
+                                <div class="order_item">
+                                    <p >{{ key }}</p><br>
+                                    <p>{{ el.description }}</p><br>
+                                    <p>x{{ el.quantity }}</p><br>
+                                    <p><b>{{ el.price }}PLN</b></p>
+                                </div>
+                        {% endfor %}
+                        </div>
+                        <div >
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+    {% endif %}
  {% endblock %}

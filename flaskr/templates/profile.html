@@ -48,19 +48,34 @@
         <form class="change_button" action="{{ url_for('auth.change_email') }}" method="post">
             <button type="submit">Change your email</button>
         </form>
-
+        <h2 class="name" style="margin-top: 40px;">Order history</h2>
         <div class="flex-container">
-           <div class="flex-items">Invoice ID
-           {% for item in data %} <p>{{  item.invoice }}</p>{%  endfor %}
-           </div>
-           <div class="flex-items">Order Status
-            {% for item in data %} <p>{{  item.status }}</p>{%  endfor %}</div>
-           <div class="flex-items">Order Date
-               {% for item in data %}<p> {{  item.date_created.strftime("%H:%M")}}&nbsp;&nbsp;&nbsp;&nbsp;{{  item.date_created.strftime("%B %d %Y") }}</p>{%  endfor %}
-           </div>
-           </div>
+             {% for item in data %}
+                <div style="display: flex; flex-direction: row">
+                    <div class="flex-items">
+                      <form  method="post" action="/invoice">
+                        <input type="hidden" name="fv_id" value="{{ item.invoice }}">
+                        <button style="background: none;
+                        margin: 10px 0px;
+                        color: inherit;
+                        border: none;
+                        padding: 0;
+                        font: inherit;
+                        cursor: pointer;
+                        outline: inherit;" >{{  item.invoice }}</button>
+                      </form>
+                    </div>
+                    <div class="flex-items">
+                        <p>{{  item.status }}</p>
+                    </div>
+                    <div class="flex-items">
+                        <p> {{  item.date_created.strftime("%H:%M")}}&nbsp;&nbsp;&nbsp;&nbsp;{{  item.date_created.strftime("%B %d %Y") }}</p>
+                    </div>
+                </div>
+            {%  endfor %}
+            </div>
         <a href="/logout" class="login_btn" style="margin-top: 100px;">Log out</a>
-        </div>
+
 
     {% endif %}
 

@@ -63,26 +63,26 @@
 
 .flex-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  color: #FBFBEB;
-  font-weight: 600;
-  font-size: 18px;
-  margin: 30px;
+  flex-direction: column;
+  overflow: auto;
+  height:20vh;
+
+}
+
+.flex-container::-webkit-scrollbar{
+  display: none;
 }
 
 .flex-items {
-  width: 12vw;
+  width: 7vw;
   color: #FBFBEB;
+    justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .flex-items p {
   font-size: 14px;
   font-weight: 200;
-  margin: 5px 0px;
+  margin: 10px 0px;
 }
-
 /*# sourceMappingURL=profile.css.map */
