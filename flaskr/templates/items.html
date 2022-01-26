@@ -4,6 +4,8 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/items.css') }}">
 {% endblock %}
 
+
+
     {% block container %}
 
         <div class="items" >
@@ -21,7 +23,7 @@
                             </div>
                             <form class="add_button" action="{{ url_for('AddCart') }}" method="post">
                                 <input type="hidden" name="product_name" value="{{ el.name }}">
-                                <button class="btn" type="submit">Add to cart</button>
+                                <button class="button" type="submit"><span>Add </span></button>
                             </form>
                         </div>
                     {% endfor %}

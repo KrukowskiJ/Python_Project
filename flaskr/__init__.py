@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request,  url_for, json, redirect
+from flask import Flask, render_template, request,  url_for, json, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from flask_login import LoginManager
+from flask_login import LoginManager, login_user, current_user,logout_user
 app = Flask(__name__)
 app.secret_key = "hello"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -24,6 +24,7 @@ def load_user(user_id):
 db.create_all()
 db.session.commit()
 admin = Admin(app, name='FLASK SQUAD SHOP - ADMINISTRATION PANEL', template_mode='bootstrap4')
+
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Product, db.session))
 admin.add_view(ModelView(Newsletter, db.session))

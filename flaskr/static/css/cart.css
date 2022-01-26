@@ -70,6 +70,7 @@
 .sum {
   position: absolute;
   right: 8vw;
+  top:42vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

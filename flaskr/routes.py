@@ -1,5 +1,5 @@
 import os
-from flask import  Blueprint, render_template, request,  url_for, redirect, session
+from flask import Blueprint, render_template, request,  url_for, redirect, session
 from flaskr import app, db
 from flaskr.models import Product,Newsletter, RabatCode, CustomerOrders
 from flask_login import login_user, current_user,logout_user
@@ -40,6 +40,8 @@ def AddCart():
 def redirectx():
     return redirect("/men")
 
+
+
 @app.route('/newsletter', methods=['GET', 'POST'])
 def subscribe():
     if request.method == 'POST':
@@ -58,7 +60,7 @@ def subscribe():
 
 @app.route("/<sex>", methods=['GET', 'POST'])
 def start(sex):
-    return render_template('index.html', sex=sex)
+    return render_template('index.html', sex=sex, cart=cart)
 
 @app.route('/<sex>/lookbook', methods=['GET', 'POST'])
 def lookbook(sex):  # put application's code here
@@ -92,9 +94,9 @@ def cart():
     else:
         return render_template('cart.html', sex='men')
 
-@app.route('/cartdelete')
+@app.route('/cartdelete', methods=['POST','GET'])
 def cartdelete():
-    session.pop('cart',None)
+    session.pop('cart', None)
     return redirect("/cart")
 
 @app.route('/deleteitem', methods=['POST','GET'])
@@ -140,6 +142,27 @@ def invoice():
     except Exception as e:
         print(e)
         return redirect(url_for('cart'))
+
+
+@app.route('/changestatus', methods=['POST', 'GET'])
+def changestatus():
+    try:
+        fv_id = request.form.get('fv_id')
+        type = request.form.get('type')
+        fv = CustomerOrders.query.filter_by(invoice=fv_id).first()
+        if type == "Confirmed":
+            fv.status = "Confirmed"
+        elif type == "Canceled":
+            fv.status = "Canceled"
+        else:
+            fv.status = "Sent"
+
+        db.session.commit()
+        return redirect(request.referrer)
+    except Exception as e:
+        print(e)
+        return redirect(request.referrer)
+
 
 
 # TODO

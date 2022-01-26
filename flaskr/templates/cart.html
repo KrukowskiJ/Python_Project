@@ -41,10 +41,13 @@
                      <input type="hidden" name="total_price" value="{{ total }}">
                       <button class="custom-btn btn-12"><span>Buy now</span><span>Process Order</span></button>
                     </form>
-                    <div class="sum">
-                        <h3 class="title">TOTAL: {{total}} PLN</h3>
-                        <button href="cartdelete" class="custom-btn" style="background: linear-gradient(0deg, #F28383 0%, rgba(190,70,70,1) 100%);">Clear Basket</button>
-                    </div>
+                    <form autocomplete="off" method="POST" action="/cartdelete" style="margin-top: -300px">
+                        <div class="sum">
+                            <h3 class="title">TOTAL: {{total}} PLN</h3>
+                     <input type="hidden" name="total_price" value="{{ total }}">
+                      <button href="cartdelete" class="custom-btn" style="background: linear-gradient(0deg, #F28383 0%, rgba(190,70,70,1) 100%);">Clear Basket</button>
+                                </div>
+                    </form>
 
                 {% else %}
                    <h2>No Items in your cart yet</h2>

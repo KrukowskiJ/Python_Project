@@ -49,21 +49,43 @@
             <button type="submit">Change your email</button>
         </form>
         <h2 class="name" style="margin-top: 40px;">Order history</h2>
+          <div style="display: flex; flex-direction: row">
+            <div class="flex-items">
+                        <p>Order ID</p>
+            </div>
+              <div class="flex-items">
+                        <p>Client Email</p>
+            </div>
+            <div class="flex-items">
+                        <p>Order Status</p>
+            </div>
+            <div class="flex-items">
+                        <p>Order Date</p>
+            </div>
+            </div>
         <div class="flex-container">
              {% for item in data %}
                 <div style="display: flex; flex-direction: row">
+
                     <div class="flex-items">
                       <form  method="post" action="/invoice">
                         <input type="hidden" name="fv_id" value="{{ item.invoice }}">
                         <button style="background: none;
                         margin: 10px 0px;
-                        color: inherit;
+                         color: #F28383;
                         border: none;
                         padding: 0;
                         font: inherit;
                         cursor: pointer;
                         outline: inherit;" >{{  item.invoice }}</button>
                       </form>
+                    </div>
+                    <div class="flex-items">
+                        {% for el in data2 %}
+                            {% if el.id == item.user_id %}
+                                <p> {{  el.email }}</p>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                     <div class="flex-items">
                         <p>{{  item.status }}</p>
@@ -74,7 +96,7 @@
                 </div>
             {%  endfor %}
             </div>
-        <a href="/logout" class="login_btn" style="margin-top: 100px;">Log out</a>
+        <a href="/logout" class="logout_btn" style="margin-top: 30px;">Log out</a>
 
 
     {% endif %}

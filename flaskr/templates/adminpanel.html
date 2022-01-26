@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block style %}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/profile.css') }}">
+{% endblock %}
+
+{% block container %}
+<div class="card_container">
+    <div class="card" >
+        <h2 class="name" style="margin:15px; letter-spacing: 1px">ADMIN PANEL</h2>
+        <div style="display: flex; flex-direction: row">
+            <div class="flex-items">
+                        <p></p>
+            </div>
+            <div class="flex-items">
+                        <p></p>
+            </div>
+            <div class="flex-items">
+                        <p></p>
+            </div>
+            <div class="flex-items">
+                        <p>Order ID</p>
+            </div>
+               <div class="flex-items">
+                        <p>Client Email</p>
+            </div>
+            <div class="flex-items">
+                        <p>Order Status</p>
+            </div>
+            <div class="flex-items">
+                        <p>Order Date</p>
+            </div>
+            </div>
+        <div class="records">
+         {% for item in data|reverse %}
+                <div style="display: flex; flex-direction: row">
+                     <div class="flex-items">
+                      <form  method="post" action="/changestatus">
+                        <input type="hidden" name="fv_id" value="{{ item.invoice }}">
+                        <input type="hidden" name="type" value="Canceled">
+                        <button class="buttx button-3" >CANCEL</button>
+                      </form>
+                     </div>
+                     <div class="flex-items">
+                      <form  method="post" action="/changestatus">
+                        <input type="hidden" name="fv_id" value="{{ item.invoice }}">
+                        <input type="hidden" name="type" value="Confirmed">
+                        <button class="buttx button-1" >CONFIRM</button>
+                      </form>
+                    </div>
+                    <div class="flex-items">
+                      <form  method="post" action="/changestatus">
+                        <input type="hidden" name="fv_id" value="{{ item.invoice }}">
+                        <input type="hidden" name="type" value="Sent">
+                        <button class="buttx button-2">SEND</button>
+                      </form>
+                    </div>
+                    <div class="flex-items">
+                      <form  method="post" action="/invoice">
+                        <input type="hidden" name="fv_id" value="{{ item.invoice }}">
+                        <button style="background: none;
+                        margin: 10px 0px;
+                        color: #F28383;
+                        font-weight: bold;
+                        border: none;
+                        padding: 0;
+                        font-size: 15px;
+                        cursor: pointer;
+                        outline: inherit;" >{{  item.invoice }}</button>
+                      </form>
+                    </div>
+                      <div class="flex-items">
+                        {% for el in data2 %}
+                            {% if el.id == item.user_id %}
+                                <p> {{  el.email }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="flex-items">
+                        <p>{{  item.status }}</p>
+                    </div>
+                    <div class="flex-items">
+                        <p> {{  item.date_created.strftime("%H:%M")}}&nbsp;&nbsp;&nbsp;&nbsp;{{  item.date_created.strftime("%B %d %Y") }}</p>
+                    </div>
+                </div>
+            {%  endfor %}
+            </div>
+        <a href="/logout" class="login_btn" style="margin-top: 100px;">Log out</a>
+    </div>
+</div>
+ {% endblock %}

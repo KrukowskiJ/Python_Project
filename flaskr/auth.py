@@ -19,8 +19,12 @@ def logout():
 
 @auth.route('/user',methods = ['POST', 'GET'])
 def user():
+    data2 = User.query.all()
+    if current_user.email == "admin@admin.pl":
+        data = CustomerOrders.query.all()
+        return render_template('adminpanel.html', sex='men', user=current_user, data=data, data2=data2)
     data = CustomerOrders.query.filter_by(user_id=current_user.id).order_by(CustomerOrders.date_created.desc())
-    return render_template('profile.html', sex='men', user=current_user, data=data)
+    return render_template('profile.html', sex='men', user=current_user, data=data, data2=data2)
 
 @auth.route('/panel',methods = ['POST', 'GET'])
 def panel():
