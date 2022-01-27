@@ -36,7 +36,7 @@
 ### Screen Shots
 
 * Home Page
-![image](https://user-images.githubusercontent.com/62674442/151355223-c4c8db4f-352e-420c-9420-d09e2e5e2f40.png)
+![image](https://user-images.githubusercontent.com/62674442/151389022-17e1576d-aaec-43a6-a187-61ba9482c5c2.png)
 
 * Newsletter / Footer
 ![image](https://user-images.githubusercontent.com/62674442/151355223-c4c8db4f-352e-420c-9420-d09e2e5e2f40.png)
@@ -48,10 +48,13 @@
 ![image](https://user-images.githubusercontent.com/62674442/151385930-9c154c26-8766-4850-ae27-253dee258e52.png)
 
 * Admin Panel
-![image](https://user-images.githubusercontent.com/62674442/151355223-c4c8db4f-352e-420c-9420-d09e2e5e2f40.png)
+![image](https://user-images.githubusercontent.com/62674442/151389371-35a4b49c-d9f5-45e1-8081-7264081c109d.png)
 
 * Database ( Flask_Admin Panel )
 ![image](https://user-images.githubusercontent.com/62674442/151386104-4bc63a5e-9b10-47d8-b207-9c7aba825bc9.png)
+
+* Look Book
+![image](https://user-images.githubusercontent.com/62674442/151389207-36549112-fcab-4abb-acc7-7fca3e2b9748.png)
 
 
 ## Installation
